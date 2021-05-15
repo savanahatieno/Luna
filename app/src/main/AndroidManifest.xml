@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Luna"
         tools:ignore="AllowBackup">
-        <activity android:name=".WelcomeScreen"/>
+        <activity android:name=".WelcomeScreen"
+            android:label="Welcome"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
