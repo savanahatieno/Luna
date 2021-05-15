@@ -8,7 +8,7 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:lottie_url=""
+        app:lottie_fileName="sky.json"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>
 
