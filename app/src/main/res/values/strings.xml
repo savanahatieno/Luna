@@ -15,6 +15,8 @@
     <!--    BUTTONS -->
     <string name="forget_password"> Forget Password? </string>
     <string name="login"> LOGIN </string>
+    <string name="signup" >SIGN UP</string>
+    <string name="already" >Already have an Account? Login Here</string>
     <string name="new_user"> New User ? SIGN UP HERE </string>
     <string name="luna_app">Luna App</string>
 
