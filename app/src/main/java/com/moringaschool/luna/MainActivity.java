@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
@@ -42,17 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setAnimation(topAnim);
         textView1.setAnimation(bottomAnim);
-        
-        
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              Intent  intent = new Intent(MainActivity.this,Login.class);
-              startActivity(intent);
-              finish();
-            }
-        },WELCOME_SCREEN);
 
+
+        final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                startActivity(new Intent(MainActivity.this,Login.class));
+                finish();
+            },4000);
 
 
 
