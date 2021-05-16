@@ -12,5 +12,6 @@
     <string name="forget_password" > Forget Password? </string>
     <string name="login" > LOGIN </string>
     <string name="new_user" > New User ? SIGN UP HERE </string>
+    <string name="luna_app">Luna App</string>
 
 </resources>
