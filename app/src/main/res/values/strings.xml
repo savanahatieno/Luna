@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">Luna</string>
     <string name="welcome">Welcome Back </string>
+    <string name="welcome1"> Welcome  </string>
     <string name="slogan"> Sign in to continue </string>
+    <string name="slogan1" >Create your account </string>
 
-    <string name="name"> Name  </string>
+    <string name="name"> Full Name  </string>
     <string name="username"> Username </string>
+    <string name="email" >Email Address</string>
     <string name="password"> Enter your password .... </string>
+    <string name="confirm">Confirm your password </string>
 
 
     <!--    BUTTONS -->
