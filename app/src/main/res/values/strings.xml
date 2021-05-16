@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Luna</string>
+    <string name="welcome" >Welcome Back </string>
+    <string name="slogan" > Sign in to continue </string>
+
+    <string name="name" > Name  </string>
+    <string name="username" > Username </string>
+    <string name="password" > Enter your password .... </string>
+
+
+           <!--    BUTTONS -->
+    <string name="forget_password" > Forget Password? </string>
+    <string name="login" > LOGIN </string>
+    <string name="new_user" > New User ? SIGN UP HERE </string>
+
 </resources>
