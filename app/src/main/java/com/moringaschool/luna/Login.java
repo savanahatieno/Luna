@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     private Button mloginrecievedbutton;
@@ -20,9 +21,13 @@ public class Login extends AppCompatActivity {
 
         mloginrecievedbutton = (Button)findViewById(R.id.loginrecievedbutton);
 
+        mloginrecievedbutton.setOnClickListener(v -> {
+            //do something
+            Toast.makeText(Login.this,"Account Created", Toast.LENGTH_LONG).show();
+        });
 
 
 
 
 
-}
+    }
