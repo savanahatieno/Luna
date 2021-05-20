@@ -19,7 +19,8 @@
     <string name="already" >Already have an Account? Login Here</string>
     <string name="new_user"> New User ? SIGN UP HERE </string>
     <string name="luna_app">Luna App</string>
-    <string name="invalid_name">PLease enter your fullname</string>
+    <string name="invalid_fullname">PLease enter your fullname</string>
+    <string name="invalid_username">PLease enter your username</string>
     <string name="invalid_emailaddress">Please enter your email address</string>
     <string name="invalid_password">PLease enter your password</string>
 

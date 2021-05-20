@@ -62,7 +62,7 @@
         android:text="LOGIN" />
 
     <EditText
-        android:id="@+id/fullname"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
@@ -113,7 +113,7 @@
         android:textColorHint="#000000" />
 
     <CheckBox
-        android:id="@+id/fullname"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

@@ -2,14 +2,11 @@ package com.moringaschool.luna;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -18,7 +15,7 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 public class Login extends AppCompatActivity {
 
-    EditText eFullName, eEmail, ePassword;
+    EditText eUsername, eEmail, ePassword;
     AwesomeValidation awesomeValidation;
 
 
@@ -31,7 +28,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        eFullName = findViewById(R.id.fullname);
+        eUsername = findViewById(R.id.username);
         eEmail = findViewById(R.id.emailaddress);
         ePassword = findViewById(R.id.password);
 
@@ -40,7 +37,7 @@ public class Login extends AppCompatActivity {
 
         //Add Validation
 
-        awesomeValidation.addValidation(this,R.id.fullname, RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        awesomeValidation.addValidation(this,R.id.username, RegexTemplate.NOT_EMPTY,R.string.invalid_username);
         awesomeValidation.addValidation(this,R.id.emailaddress, RegexTemplate.NOT_EMPTY,R.string.invalid_emailaddress);
         awesomeValidation.addValidation(this,R.id.password, RegexTemplate.NOT_EMPTY,R.string.invalid_password);
 
@@ -57,7 +54,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        loginButton = (Button) findViewById(R.id.loginButton);
+        loginButton = (Button) findViewById(R.id.signupButton);
 
         loginButton.setOnClickListener(v -> {
             //do something
