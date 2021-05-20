@@ -12,22 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
-    private Button mloginrecievedbutton;
+//    private Button mloginrecievedbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        mloginrecievedbutton = (Button)findViewById(R.id.loginrecievedbutton);
-
-        mloginrecievedbutton.setOnClickListener(v -> {
-            //do something
-            Toast.makeText(Login.this,"Account Created", Toast.LENGTH_LONG).show();
-        });
-
-
+//        mloginrecievedbutton = (Button) findViewById(R.id.loginrecievedbutton);
+//
+//        mloginrecievedbutton.setOnClickListener(v -> {
+//            //do something
+//            Toast.makeText(Login.this, "Account Created", Toast.LENGTH_LONG).show();
+//        });
 
 
+    }
 
     }
