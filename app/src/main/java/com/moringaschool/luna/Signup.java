@@ -7,8 +7,11 @@ import android.os.Bundle;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,9 +24,9 @@ public class Signup extends AppCompatActivity {
     EditText eFullName, eUsername, eEmail, ePassword;
 
     @BindView(R.id.alreadybutton) Button alreadyButton;
+    @BindView(R.id.checkboxsignup) CheckBox checkboxsignup;
 
 
-//    EditText eFullName,eUsername, eEmail, ePassword;
     AwesomeValidation awesomeValidation;
 
 
@@ -32,6 +35,19 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+
+
+
+        checkboxsignup.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked)
+            {
+                ePassword.setTransformationMethod(null);
+            }
+            else
+            {
+                ePassword.setTransformationMethod(new PasswordTransformationMethod());
+            }
+        });
 
 
         eFullName = findViewById(R.id.fullname);
@@ -62,12 +78,9 @@ public class Signup extends AppCompatActivity {
             }
         });
 
-        alreadyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Signup.this, Login.class);
-                startActivity(intent);
-            }
+        alreadyButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Signup.this, Login.class);
+            startActivity(intent);
         });
 
     }
