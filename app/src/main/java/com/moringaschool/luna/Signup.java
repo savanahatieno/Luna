@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +18,12 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 public class Signup extends AppCompatActivity {
 
+    EditText eFullName, eUsername, eEmail, ePassword;
 
-    EditText eFullName,eUsername, eEmail, ePassword;
+    @BindView(R.id.alreadybutton) Button alreadyButton;
+
+
+//    EditText eFullName,eUsername, eEmail, ePassword;
     AwesomeValidation awesomeValidation;
 
 
@@ -24,14 +31,7 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        Button alreadybutton = (Button) findViewById(R.id.alreadybutton);
-        alreadybutton.setOnClickListener(v -> {
-            //do something
-            Intent intent = new Intent(Signup.this, Login.class);
-            startActivity(intent);
-        });
-
+        ButterKnife.bind(this);
 
 
         eFullName = findViewById(R.id.fullname);
@@ -59,6 +59,14 @@ public class Signup extends AppCompatActivity {
             }else {
                 Toast.makeText(getApplicationContext()
                         ,"Validation Failed....",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alreadyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Signup.this, Login.class);
+                startActivity(intent);
             }
         });
 
