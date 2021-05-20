@@ -20,13 +20,19 @@ public class Signup extends AppCompatActivity {
     AwesomeValidation awesomeValidation;
 
 
-    private Button signupButton;
-    private Button alreadybutton;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        Button alreadybutton = (Button) findViewById(R.id.alreadybutton);
+        alreadybutton.setOnClickListener(v -> {
+            //do something
+            Intent intent = new Intent(Signup.this, Login.class);
+            startActivity(intent);
+        });
+
+
 
         eFullName = findViewById(R.id.fullname);
         eUsername = findViewById(R.id.username);
@@ -43,27 +49,18 @@ public class Signup extends AppCompatActivity {
         awesomeValidation.addValidation(this,R.id.password, RegexTemplate.NOT_EMPTY,R.string.invalid_password);
 
 
-
-        signupButton = (Button) findViewById(R.id.signupButton);
-        alreadybutton = (Button) findViewById(R.id.alreadybuton);
+        Button signupButton = (Button) findViewById(R.id.signupButton);
 
 
-        signupButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (awesomeValidation.validate()){
-                    Toast.makeText(getApplicationContext()
-                            ,"Form Validate Successfully...",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getApplicationContext()
-                            ,"Validation Failed....",Toast.LENGTH_LONG).show();
-                }
+        signupButton.setOnClickListener(v -> {
+            if (awesomeValidation.validate()){
+                Toast.makeText(getApplicationContext()
+                        ,"Form Validate Successfully...",Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(getApplicationContext()
+                        ,"Validation Failed....",Toast.LENGTH_LONG).show();
             }
         });
 
-    }
-    public void openLogin (){
-        Intent intent = new Intent(this,Login.class);
-        startActivity(intent);
     }
 }

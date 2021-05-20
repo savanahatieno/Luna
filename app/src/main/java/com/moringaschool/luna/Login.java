@@ -41,16 +41,13 @@ public class Login extends AppCompatActivity {
         awesomeValidation.addValidation(this,R.id.emailaddress, RegexTemplate.NOT_EMPTY,R.string.invalid_emailaddress);
         awesomeValidation.addValidation(this,R.id.password, RegexTemplate.NOT_EMPTY,R.string.invalid_password);
 
-        loginButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (awesomeValidation.validate()){
-                    Toast.makeText(getApplicationContext()
-                    ,"Form Validate Successfully...",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getApplicationContext()
-                    ,"Validation Failed....",Toast.LENGTH_LONG).show();
-                }
+        loginButton.setOnClickListener(v -> {
+            if (awesomeValidation.validate()){
+                Toast.makeText(getApplicationContext()
+                ,"Form Validate Successfully...",Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(getApplicationContext()
+                ,"Validation Failed....",Toast.LENGTH_LONG).show();
             }
         });
 
