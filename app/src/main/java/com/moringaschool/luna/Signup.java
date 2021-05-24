@@ -23,7 +23,7 @@ public class Signup extends AppCompatActivity {
 
     EditText eFullName, eUsername, eEmail, ePassword;
 
-    @BindView(R.id.alreadybutton) Button alreadyButton;
+//    @BindView(R.id.alreadybutton) Button alreadyButton;
     @BindView(R.id.checkboxsignup) CheckBox checkboxsignup;
 
 
@@ -78,10 +78,10 @@ public class Signup extends AppCompatActivity {
             }
         });
 
-        alreadyButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Signup.this, Login.class);
-            startActivity(intent);
-        });
+//        alreadyButton.setOnClickListener(v -> {
+//            Intent intent = new Intent(Signup.this, Login.class);
+//            startActivity(intent);
+//        });
 
     }
 }
