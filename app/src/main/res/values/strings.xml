@@ -3,11 +3,11 @@
     <string name="welcome">Welcome Back </string>
     <string name="welcome1"> Welcome  </string>
     <string name="slogan"> Sign in to continue </string>
-    <string name="slogan1" >Create your account </string>
+    <string name="slogan1">Create your account </string>
 
     <string name="name"> Full Name  </string>
     <string name="username"> Username </string>
-    <string name="email" >Email Address</string>
+    <string name="email">Email Address</string>
     <string name="password"> Enter your password .... </string>
     <string name="confirm">Confirm your password </string>
 
@@ -15,8 +15,8 @@
     <!--    BUTTONS -->
     <string name="forget_password"> Forget Password? </string>
     <string name="login"> LOGIN </string>
-    <string name="signup" >SIGN UP</string>
-    <string name="already" >Already have an Account? Login Here</string>
+    <string name="signup">SIGN UP</string>
+    <string name="already">Already have an Account? Login Here</string>
     <string name="new_user"> New User ? SIGN UP HERE </string>
     <string name="luna_app">Luna App</string>
     <string name="invalid_fullname">PLease enter your fullname</string>
