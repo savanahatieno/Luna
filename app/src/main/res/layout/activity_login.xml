@@ -18,7 +18,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="-1dp"
-        android:background="@drawable/backgroundimage"
+        android:background="#819EAE"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
     <ImageView
@@ -61,7 +61,7 @@
         android:backgroundTint="#1265DF"
         android:fontFamily="@font/roboto"
         android:text="@string/login"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold" />
 
