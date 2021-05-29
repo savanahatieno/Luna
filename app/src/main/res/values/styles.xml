@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Luna" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#039AFF</item>
+        <item name="colorPrimary">#509CCC</item>
         <item name="colorPrimaryVariant">#ED0CF4</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

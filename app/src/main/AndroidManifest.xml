@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Luna"
         tools:ignore="AllowBackup">
-        <activity android:name=".Login"></activity>
+        <activity android:name=".StartPage"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".Signup" />
         <activity android:name=".MainActivity">
             <intent-filter>
