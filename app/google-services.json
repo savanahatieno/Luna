@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348534258197:android:0dd5ac3494cc998d9cac1c",
+        "android_client_info": {
+          "package_name": "com.moringaschool.lunas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348534258197-gaa3sdlb1a6c5t96961j461e228egl53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPEpiyRuorZI0V3msr4USBRKdF9uSMwAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348534258197-gaa3sdlb1a6c5t96961j461e228egl53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
