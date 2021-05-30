@@ -36,7 +36,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener {
         db = new DatabaseHandler(this);
         db.openDatabase();
 
-        tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
+        tasksRecyclerView = findViewById(R.id.taskRecyclerVIew);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         tasksAdapter = new ToDoAdapter(db,TodoMain.this);
         tasksRecyclerView.setAdapter(tasksAdapter);
