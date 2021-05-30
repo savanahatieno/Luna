@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Signup extends AppCompatActivity implements View.OnClickListener{
@@ -173,29 +174,57 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull  Task<AuthResult> task) {
+                      if (task.isSuccessful()){
+                          User user = new User(fullname, username, email);
+
+                          FirebaseDatabase.getInstance().getReference("Users")
+                                  .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                  .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+
+                                  if (task.isSuccessful()){
+                                      Toast.makeText(Signup.this,"Registered Successfully!!",Toast.LENGTH_SHORT).show();
+                                      progressBar.setVisibility(View.VISIBLE);
+
+                                      //redirect to login layout
+
+                                  }else {
+                                      Toast.makeText(Signup.this,"Failed to Register! Try Again!",Toast.LENGTH_SHORT).show();
+                                      progressBar.setVisibility(View.VISIBLE);
+                                  }
+
+                              }
+                          });
+                      }else {
+                          Toast.makeText(Signup.this,"Failed to Register",Toast.LENGTH_LONG).show();
+                          progressBar.setVisibility(View.GONE);
+                      }
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-//    private void RegisterUser (String email, String pass ){
-//        if (TextUtils.isEmpty(email)){
-//            Toast.makeText(this,"Please enter your email",Toast.LENGTH_SHORT).show();
-//        }
-//        if (TextUtils.isEmpty(pass)){
-//            Toast.makeText(this,"Please enter your password",Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            loadingBar.setTitle("Registration");
-//            loadingBar.setMessage("Please wait, while we enter your details");
-//            loadingBar.show();
-
-//            mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(task -> {
-//                if (task.isSuccessful()){
-//                    Toast.makeText(Signup.this,"User Registered successfully!!",Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    Toast.makeText(Signup.this,"Registration failed",Toast.LENGTH_SHORT).show();
-//                }
-//                loadingBar.dismiss();
-//
 
 }
 
