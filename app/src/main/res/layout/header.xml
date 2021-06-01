@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@color/teal_700"
+    android:background="@drawable/samp"
     android:gravity="bottom"
+    android:orientation="vertical"
     android:padding="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
-    <ImageView
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginBottom="5dp"/>
+    <!--    <ImageView-->
+    <!--        android:layout_width="55dp"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:src="@drawable/profile"-->
+    <!--        android:layout_marginBottom="5dp"/>-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        app:civ_border_color="#FFFEFE"
+        app:civ_border_width="2dp"
+        android:layout_width="107dp"
+        android:layout_height="86dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/profile" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:textColor="#FFFFFF"
+        android:id="@+id/username_profile"
+        android:layout_width="225dp"
+        android:layout_height="33dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:text=" Luke Mickleson"
+        android:textColor="#F1EEEE"
         android:textSize="24sp" />
 
 
-
-</LinearLayout>
+</RelativeLayout>
