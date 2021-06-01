@@ -169,7 +169,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        User user = new User(fullname, username, username);
+                        User user = new User(fullname, username, email);
 
                         FirebaseDatabase.getInstance().getReference("users")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -177,6 +177,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                             if (task1.isSuccessful()) {
                                 Toast.makeText(Signup.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+
 
                                 //redirect
                             } else {
