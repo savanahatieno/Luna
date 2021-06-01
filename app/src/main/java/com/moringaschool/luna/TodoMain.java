@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -114,6 +116,30 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         Collections.reverse(taskList);
         tasksAdapter.setTasks(taskList);
         tasksAdapter.notifyDataSetChanged();
+    }
+
+    //Search Widget
+    @Override
+    public boolean onCreateOptionMenu (Menu menu_search){
+
+        getMenuInflater().inflate(R.menu.menu_search,menu_search);
+
+        MenuItem menuItem = menu_search.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Type here to search");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu_search);
     }
 
 }

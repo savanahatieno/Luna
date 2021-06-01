@@ -31,5 +31,6 @@
         app:collapseIcon="@drawable/menu_icon"
         app:navigationIcon="@drawable/menu_icon" />
 
+
 <!--    </ScrollView>-->
 </androidx.drawerlayout.widget.DrawerLayout>
