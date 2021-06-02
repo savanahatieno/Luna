@@ -106,6 +106,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             eUsername2.requestFocus();
             return;
         }
+
+
         if (email2.isEmpty()) {
             eEmail2.setError("Email is required");
             eEmail2.requestFocus();
@@ -132,7 +134,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 //redirect to user profile
-                startActivity(new Intent(Login.this, TodoMain.class));
+                startActivity(new Intent(Login.this,ProfileActivity.class));
             } else {
                 Toast.makeText(Login.this, "Failed to login! PLease check your credentials", Toast.LENGTH_SHORT).show();
             }
@@ -141,4 +143,53 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
     }
-}
+//
+//    private void isUser() {
+//        final String userEnteredUsername = eUsername2.getText().toString().trim();
+//        final String userEnteredEmail = eEmail2.getText().toString().trim();
+//        final String userEnteredPassword = ePassword2.getText().toString().trim();
+//
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+//
+//        Query checkUser = reference.orderByChild("eUsername2").equalTo(userEnteredUsername);
+//
+//
+//        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//
+//                if (snapshot.exists()){
+//
+//                    String passwordFromDB = snapshot.child(userEnteredUsername).child("ePassword2").getValue(String.class);
+//
+//                    if (passwordFromDB.equals(userEnteredPassword)){
+//                        String usernameFromDB = snapshot.child(userEnteredUsername).child("username").getValue(String.class);
+//                        String emailFromDB = snapshot.child(userEnteredEmail).child("eEmail2").getValue(String.class);
+//
+//                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+//                        intent.putExtra("username", usernameFromDB);
+//                        intent.putExtra("email", emailFromDB);
+//                        intent.putExtra("password", passwordFromDB);
+//                        startActivity(intent);
+//
+//                    }else {
+//                        progressBar.setVisibility(View.GONE);
+//                        ePassword2.setError("Wrong Password");
+//                        ePassword2.requestFocus();
+//                    }
+//
+//                }else {
+//                    progressBar.setVisibility(View.GONE);
+//                    eUsername2.setError("No such User exist");
+//                    eUsername2.requestFocus();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//            }
+//        });
+
+    }
+

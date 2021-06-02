@@ -46,7 +46,22 @@
             android:background="@color/white"
             android:minHeight="?attr/actionBarSize"
             app:collapseIcon="@drawable/menu_icon"
+            app:title="Task"
             app:navigationIcon="@drawable/menu_icon" />
+
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar2"-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginStart="359dp"-->
+<!--            android:layout_marginTop="9dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:minHeight="?attr/actionBarSize"-->
+<!--            app:collapseIcon="@drawable/search_icon"-->
+<!--            app:navigationIcon="@drawable/search_icon" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/taskRecyclerVIew"

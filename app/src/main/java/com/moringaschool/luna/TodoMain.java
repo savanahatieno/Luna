@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -60,6 +64,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         //navigation drawer menu pop up
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -67,7 +72,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         toggle.syncState();
 
        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-
+        navigationView.setCheckedItem(R.id.nav_home);
        taskList = new ArrayList<>() ;
 
         tasksRecyclerView = findViewById(R.id.taskRecyclerVIew);
@@ -104,9 +109,17 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return true;
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+
+            case R.id.nav_profile:
+                break;
+
+            case R.id.nav_share: Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show(); break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START); return true;
     }
 
 
@@ -120,11 +133,11 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
 
     //Search Widget
     @Override
-    public boolean onCreateOptionMenu (Menu menu_search){
+    public boolean onCreateOptionMenu (Menu menu){
 
-        getMenuInflater().inflate(R.menu.menu_search,menu_search);
+        getMenuInflater().inflate(R.menu.menu_main,menu);
 
-        MenuItem menuItem = menu_search.findItem(R.id.action_search);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Type here to search");
 
@@ -139,7 +152,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu_search);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

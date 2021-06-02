@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <group android:checkableBehavior="single">
-
-        <item android:id="@+id/action_search"
-            android:title="Search"
-            android:icon="@drawable/search_icon"
-            app:actionViewClass="android.widget.SearchView"
-            app:showAsAction="ifRoom|collapseActionView">
-
-        </item>
-
         <item
             android:id="@+id/nav_home"
             android:title="Home"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_cycle"
-            android:title="Cycling"
+            android:id="@+id/nav_inbox"
+            android:title="Inbox"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_bus"
-            android:title="Bus"
+            android:id="@+id/nav_today"
+            android:title="Today"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_plane"
-            android:title="Plane"
+            android:id="@+id/nav_upcoming"
+            android:title="Upcoming"
             android:icon="@drawable/home_icon"/>
 
     </group>
@@ -33,21 +26,21 @@
 
 
     <item
-        android:title="Porfile">
+        android:title="Others">
 
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_login"
-                    android:title="Login"
-                    android:icon="@drawable/home_icon"/>
                 <item
                     android:id="@+id/nav_profile"
                     android:title="Profile"
                     android:icon="@drawable/home_icon"/>
                 <item
-                    android:id="@+id/nav_logout"
-                    android:title="Logout"
+                    android:id="@+id/nav_settings"
+                    android:title="Settings"
+                    android:icon="@drawable/home_icon"/>
+                <item
+                    android:id="@+id/nav_share"
+                    android:title="Share"
                     android:icon="@drawable/home_icon"/>
             </group>
         </menu>
