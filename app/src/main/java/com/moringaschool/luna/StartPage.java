@@ -54,20 +54,17 @@ public class StartPage extends AppCompatActivity {
 
 
         email_signIn  = (Button) findViewById(R.id.email_signIn);
-        email_signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartPage.this, Signup.class);
-                startActivity(intent);
-            }
+        email_signIn.setOnClickListener(v -> {
+            Intent intent = new Intent(StartPage.this, Signup.class);
+            startActivity(intent);
         });
 
 
         mAuth = FirebaseAuth.getInstance();
 
 
-        
-        
+
+
         createRequest();
 
         findViewById(R.id.google_signIn).setOnClickListener(v -> signIn());
@@ -78,7 +75,7 @@ public class StartPage extends AppCompatActivity {
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("728791658387-9s4d2q8q4840k41p21r9h0vsepm01vob.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);

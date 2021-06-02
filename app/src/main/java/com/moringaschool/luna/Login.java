@@ -22,19 +22,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.annotations.NotNull;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    EditText  eUsername2, eEmail2, ePassword2;
-
-    @BindView(R.id.checkboxlogin) CheckBox checkboxlogin;
+    EditText eUsername2, eEmail2, ePassword2;
 
 
     private FirebaseAuth mAuth;
@@ -42,7 +45,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button loginbutton;
 
 
-    AwesomeValidation awesomeValidation2;
+    //CHECKBOX BUTTTON
+    @BindView(R.id.checkboxlogin)
+    CheckBox checkboxlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +55,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        loginbutton = (Button) findViewById(R.id.loginButton) ;
+        loginbutton = (Button) findViewById(R.id.loginButton);
         loginbutton.setOnClickListener(this);
 
-
+        //CHECKBOX HIDE AND SHOW
         checkboxlogin.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked)
-            {
+            if (isChecked) {
                 ePassword2.setTransformationMethod(null);
-            }
-            else
-            {
+            } else {
                 ePassword2.setTransformationMethod(new PasswordTransformationMethod());
             }
         });
@@ -74,29 +76,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
         mAuth = FirebaseAuth.getInstance();
-
-//
-//        awesomeValidation2 = new AwesomeValidation(ValidationStyle.BASIC);
-//
-//        //Add Validation
-//        awesomeValidation2.addValidation(this,R.id.username2, RegexTemplate.NOT_EMPTY,R.string.invalid_username);
-//        awesomeValidation2.addValidation(this,R.id.emailaddress2, RegexTemplate.NOT_EMPTY,R.string.invalid_emailaddress);
-//        awesomeValidation2.addValidation(this,R.id.password2, RegexTemplate.NOT_EMPTY,R.string.invalid_password);
-//
-//
-//
-//
-//        loginbutton.setOnClickListener(v -> {
-//            if (awesomeValidation2.validate()){
-//                Toast.makeText(getApplicationContext()
-//                        ,"Form Validate Successfully...",Toast.LENGTH_LONG).show();
-//            }else {
-//                Toast.makeText(getApplicationContext()
-//                        ,"Validation Failed....",Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-
 
 
     }
@@ -150,23 +129,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email2,password2).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+        mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
                 //redirect to user profile
-                startActivity(new Intent(Login.this,ProfileActivity.class));
-            }else {
-                Toast.makeText(Login.this,"Failed to login! PLease check your credentials",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Login.this, TodoMain.class));
+            } else {
+                Toast.makeText(Login.this, "Failed to login! PLease check your credentials", Toast.LENGTH_SHORT).show();
             }
 
         });
-
-
-
-
-
-
-
-
 
 
     }

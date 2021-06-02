@@ -12,16 +12,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:collapseIcon="@drawable/arrow_back"
-            app:navigationIcon="@drawable/arrow_back"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/my_toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#ffffff"-->
+<!--            android:elevation="4dp"-->
+<!--            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--            app:collapseIcon="@drawable/arrow_back"-->
+<!--            app:navigationIcon="@drawable/arrow_back"-->
+<!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,66 +29,36 @@
             android:background="@drawable/samp"
             android:padding="20dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/view2"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
-                android:layout_marginTop="30dp"
-                android:background="#ffffff"
-                android:shape="ring"
-                app:cardCornerRadius="1000dp">
+            <ImageView
+                android:id="@+id/image_profile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/profile_circle" />
 
-                <ImageView
-                    android:id="@+id/profile_img_post"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile">
-
-                </ImageView>
-            </androidx.cardview.widget.CardView>
-
-
-            <!--            <de.hdodenhof.circleimageview.CircleImageView-->
-            <!--                android:id="@+id/profile_image"-->
-            <!--                android:layout_width="96dp"-->
-            <!--                android:layout_height="96dp"-->
-            <!--                android:layout_alignParentStart="true"-->
-            <!--                android:layout_alignParentBottom="true"-->
-            <!--                android:layout_marginStart="16dp"-->
-            <!--                android:layout_marginBottom="40dp"-->
-            <!--                android:src="@drawable/profile"-->
-            <!--                app:civ_border_color="#FFFEFE"-->
-            <!--                app:civ_border_width="2dp" />-->
 
             <TextView
-                android:id="@+id/fullname_field"
+                android:id="@+id/displayfullname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="125dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="90dp"
-                android:layout_toRightOf="@+id/profile_image"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="52dp"
+                android:layout_toEndOf="@+id/image_profile"
                 android:fontFamily="@font/montserrat"
-                android:includeFontPadding="false"
-                android:text="Taimoor Sikander"
-                android:textColor="#000"
+                android:text="Luke Tomlinson"
+                android:textColor="#FBFBFB"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textView"
+            <Button
+                android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="129dp"
-                android:layout_marginTop="90dp"
-                android:fontFamily="@font/montserrat"
-                android:text="agutusanah1@gmail.com"
-                android:textColor="#FFFCFC" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="21dp"
+                android:text="Logout" />
 
         </RelativeLayout>
 
@@ -100,7 +70,7 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/full_name_profile"
+                android:id="@+id/fullname_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -138,7 +108,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_profile_profile"
+                android:id="@+id/emailprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -167,10 +137,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:drawableLeft="@drawable/lock_small"
                     android:drawablePadding="9dp"
                     android:fontFamily="@font/montserrat"
-                    android:background="@color/white"
                     android:text="bearwithme" />
 
             </com.google.android.material.textfield.TextInputLayout>

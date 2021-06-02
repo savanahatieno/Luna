@@ -1,21 +1,20 @@
 {
   "project_info": {
-    "project_number": "728791658387",
-    "firebase_url": "https://fluid-shoreline-315515-default-rtdb.firebaseio.com",
-    "project_id": "fluid-shoreline-315515",
-    "storage_bucket": "fluid-shoreline-315515.appspot.com"
+    "project_number": "526921486143",
+    "project_id": "luna-2c679",
+    "storage_bucket": "luna-2c679.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:728791658387:android:eb34b23f4aec35466f4266",
+        "mobilesdk_app_id": "1:526921486143:android:c1b9fa7f6b5517fb1c4d8a",
         "android_client_info": {
           "package_name": "com.moringaschool.luna"
         }
       },
       "oauth_client": [
         {
-          "client_id": "728791658387-9s4d2q8q4840k41p21r9h0vsepm01vob.apps.googleusercontent.com",
+          "client_id": "526921486143-02e25oq4lhsj5sthkstjl5u0afo2pa28.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moringaschool.luna",
@@ -23,20 +22,20 @@
           }
         },
         {
-          "client_id": "728791658387-f2sibo7773ujjehouu215gg77tqqdgb9.apps.googleusercontent.com",
+          "client_id": "526921486143-12ka0bbcurjp70fq3kaftiage7bibj0h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJ_48XX5Aw8tdXkAGo0jo8O9qOy1NSw3I"
+          "current_key": "AIzaSyCyADbNRJR6phHeEGXvJs1Ud-29r0w15j8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "728791658387-f2sibo7773ujjehouu215gg77tqqdgb9.apps.googleusercontent.com",
+              "client_id": "526921486143-12ka0bbcurjp70fq3kaftiage7bibj0h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
