@@ -105,6 +105,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             eUsername2.setError("Username is required");
             eUsername2.requestFocus();
             return;
+        } else {
+            isUser();
         }
 
 
@@ -112,29 +114,33 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             eEmail2.setError("Email is required");
             eEmail2.requestFocus();
             return;
+        } else {
+            isUser();
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email2).matches()) {
-            eEmail2.setError("Please provide valid email");
-            eEmail2.requestFocus();
-            return;
-        }
+//        if (!Patterns.EMAIL_ADDRESS.matcher(email2).matches()) {
+//            eEmail2.setError("Please provide valid email");
+//            eEmail2.requestFocus();
+//            return;
+//        }
         if (password2.isEmpty()) {
             ePassword2.setError("Password is required");
             ePassword2.requestFocus();
             return;
+        } else {
+            isUser();
         }
-        if (password2.length() < 6) {
-            ePassword2.setError("Min password length should be 6 characters");
-            ePassword2.requestFocus();
-            return;
-        }
+//        if (password2.length() < 6) {
+//            ePassword2.setError("Min password length should be 6 characters");
+//            ePassword2.requestFocus();
+//            return;
+//        }
 
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 //redirect to user profile
-                startActivity(new Intent(Login.this,ProfileActivity.class));
+                startActivity(new Intent(Login.this, ProfileActivity.class));
             } else {
                 Toast.makeText(Login.this, "Failed to login! PLease check your credentials", Toast.LENGTH_SHORT).show();
             }
@@ -143,53 +149,54 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
     }
-//
-//    private void isUser() {
-//        final String userEnteredUsername = eUsername2.getText().toString().trim();
-//        final String userEnteredEmail = eEmail2.getText().toString().trim();
-//        final String userEnteredPassword = ePassword2.getText().toString().trim();
-//
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-//
-//        Query checkUser = reference.orderByChild("eUsername2").equalTo(userEnteredUsername);
-//
-//
-//        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//
-//                if (snapshot.exists()){
-//
-//                    String passwordFromDB = snapshot.child(userEnteredUsername).child("ePassword2").getValue(String.class);
-//
-//                    if (passwordFromDB.equals(userEnteredPassword)){
-//                        String usernameFromDB = snapshot.child(userEnteredUsername).child("username").getValue(String.class);
-//                        String emailFromDB = snapshot.child(userEnteredEmail).child("eEmail2").getValue(String.class);
-//
-//                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-//                        intent.putExtra("username", usernameFromDB);
-//                        intent.putExtra("email", emailFromDB);
-//                        intent.putExtra("password", passwordFromDB);
-//                        startActivity(intent);
-//
-//                    }else {
-//                        progressBar.setVisibility(View.GONE);
-//                        ePassword2.setError("Wrong Password");
-//                        ePassword2.requestFocus();
-//                    }
-//
-//                }else {
-//                    progressBar.setVisibility(View.GONE);
-//                    eUsername2.setError("No such User exist");
-//                    eUsername2.requestFocus();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//            }
-//        });
+
+
+    private void isUser() {
+        final String userEnteredUsername = eUsername2.getText().toString().trim();
+        final String userEnteredEmail = eEmail2.getText().toString().trim();
+        final String userEnteredPassword = ePassword2.getText().toString().trim();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+
+        Query checkUser = reference.orderByChild("eUsername2").equalTo(userEnteredUsername);
+//        Query checkUser1 = reference.orderByChild("eEmail2").equalTo(userEnteredEmail);
+//        Query checkUser2 = reference.orderByChild("ePassword2").equalTo(userEnteredPassword);
+
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    if (passwordFromDB.equals(userEnteredPassword)) {
+                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
+                        String emailFromDB = dataSnapshot.child(userEnteredEmail).child("email").getValue(String.class);
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("username", usernameFromDB);
+                        intent.putExtra("email", emailFromDB);
+
+                        intent.putExtra("password", passwordFromDB);
+                        startActivity(intent);
+                    } else {
+                        progressBar.setVisibility(View.GONE);
+                        ePassword2.setError("Wrong Password");
+                        ePassword2.requestFocus();
+                    }
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    eUsername2.setError("No such User exist");
+                    eUsername2.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
 
     }
+}
 
