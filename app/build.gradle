@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    
+
     //Firebase
     implementation 'com.google.firebase:firebase-database:20.0.0'
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
@@ -52,9 +54,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-core:19.0.0'
 
+    //Button animation
+    implementation 'com.royrodriguez:transitionbutton:0.2.0'
+}
+
 
     
 
 
 
-}
