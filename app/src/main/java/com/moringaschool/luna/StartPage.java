@@ -29,7 +29,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class StartPage extends AppCompatActivity {
 
     private Button email_signIn;
-
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;

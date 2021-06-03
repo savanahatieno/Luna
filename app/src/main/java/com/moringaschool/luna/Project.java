@@ -4,27 +4,36 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.moringaschool.luna.Adapters.RecyclerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Project extends AppCompatActivity {
+public class Project extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
 
     List<String> moviesList;
+
+    private DrawerLayout drawerLayout;
+
 
 //
 //    //Drawer Menu Variables
@@ -36,6 +45,12 @@ public class Project extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
+
+
+        drawerLayout = findViewById(R.id.drawer_layoutproject);
+        NavigationView navigationView = findViewById(R.id.nav_project);
+        navigationView.setNavigationItemSelectedListener(this);
+
 
 
 //        drawerLayoutProject = findViewById(R.id.drawer_layoutproject);
@@ -81,35 +96,76 @@ public class Project extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-//
-//        //navigation drawer menu pop up
-//        navigationView.bringToFront();
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayoutProject,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-//        drawerLayoutProject.addDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
 
+        //navigation drawer menu pop up
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ProjectFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_projects);
+//
+//        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView.setCheckedItem(R.id.nav_home);
+//
+        }
 
 
 
     }
 
-    //To avoid application closing when pressing the back button
-//    @Override
-//    public void onBackPressed() {
-//        if (drawerLayoutProject.isDrawerOpen(GravityCompat.START)){
-//            drawerLayoutProject.closeDrawer(GravityCompat.START);
-//        }
-//        else {
-//            super.onBackPressed();
-//        }
-//    }
-//
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        return true;
-//    }
+
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new MessageFragment()).commit();
+                break;
+            case R.id.nav_inbox:
+
+                break;
+            case R.id.nav_today:
+
+                break;
+            case R.id.nav_upcoming:
+
+                break;
+
+            case R.id.nav_project:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProjectFragment()).commit();
+                break;
+            case R.id.nav_profile:
+
+                break;
+            case R.id.nav_settings:
+
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    //    To avoid application closing when pressing the back button
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
@@ -135,5 +191,6 @@ public class Project extends AppCompatActivity {
 
         return  super.onCreateOptionsMenu(menu);
     }
+
 
 }
