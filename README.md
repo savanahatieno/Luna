@@ -4,6 +4,12 @@
 ## Description
 Luna is an app that help the community be productive and manage time with just a few clicks.
 
+##Functionality
+ *The user has option to login through email or google sign in 
+ *When one is logged in he/she is able to create a task right away 
+ *User is able to add or delete the task with the help of a few simple buttons 
+ *User is able to navigate through the drawer menu easily 
+ User can create a task depending on the time the task to be done e.g Today / Tomorrow
 
 ## Installation
 Clone this repository and import into **Android Studio**
@@ -35,6 +41,9 @@ https://www.figma.com/file/vI14hH3YtpNDsthzptJozY/LUNA-APP-%3A)?node-id=1%3A9
 
 ## Technologies used
 * Java.
+*Firebase
+*Figma
+*Todoist API 
 * Gradle(for unit testing).
 * XML
 * Awesome Validation
