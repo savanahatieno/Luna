@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view3"
@@ -29,16 +30,37 @@
             app:title="Projects"
             app:titleMarginStart="25dp" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/taskRecyclerView"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="54dp"
-            android:nestedScrollingEnabled="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-2dp">
+
+
+            <TextView
+                android:id="@+id/text_view_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="17dp"
+                android:textColor="@color/black" />
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/taskRecyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginTop="54dp"-->
+<!--            android:nestedScrollingEnabled="true"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
     </RelativeLayout>
 
 

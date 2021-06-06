@@ -12,9 +12,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.moringaschool.luna.ApiUser.projects;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class projectLayout extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -22,11 +34,55 @@ public class projectLayout extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawerLayout3;
     NavigationView navigationView3;
 
+    private TextView textViewResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_layout);
+
+        textViewResult = findViewById(R.id.text_view_result);
+
+        //Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.todoist.com/rest/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        TodoistApi todoistApi = retrofit.create(TodoistApi.class);
+
+        Call<List<projects>>  call = TodoistApi.getprojects();
+
+
+        call.enqueue(new Callback<List<projects>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<projects>> call, @NotNull Response<List<projects>> response) {
+
+                if (!response.isSuccessful()){
+                    textViewResult.setText("Code:" + response.code());
+                    return;
+                }
+
+                List<projects> projects1 = response.body();
+
+                for (projects projects: projects1){
+                    String contents = "";
+                    contents += "ID:" + projects.getId() + "\n";
+                    contents += "Name:" + projects.getName() + "\n";
+                    contents += "Comment:" + projects.getCommentCount() + "\n";
+                    contents += "Order:" + projects.getOrder() + "\n";
+
+                    textViewResult.append(contents);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<projects>> call, Throwable t) {
+                textViewResult.setText(t.getMessage());
+            }
+        });
 
 
         //Navigation Drawer IDS

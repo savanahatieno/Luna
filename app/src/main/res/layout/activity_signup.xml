@@ -16,7 +16,7 @@
         android:layout_marginStart="-2dp"
         android:layout_marginTop="-2dp"
         android:layout_marginBottom="-1dp"
-        android:background="#819EAE"
+        android:background="#EFEFEF"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_marginTop="54dp"
         android:fontFamily="@font/montserrat"
         android:text="Create New Account"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="30sp" />
 
     <ImageView
@@ -84,7 +84,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="188dp"
         android:background="@drawable/round_border"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#B9CCC6C6"
         android:ems="10"
         android:hint="Full name"
         android:inputType="textPersonName"
@@ -101,7 +101,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="243dp"
         android:background="@drawable/round_border"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#B9CCC6C6"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -119,7 +119,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="299dp"
         android:background="@drawable/round_border"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#B9CCC6C6"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textWebEmailAddress"
@@ -136,7 +136,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="354dp"
         android:background="@drawable/round_border"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#B9CCC6C6"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
