@@ -3,6 +3,7 @@ package com.moringaschool.luna;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -16,7 +17,6 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -71,8 +71,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-       navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-        navigationView.setCheckedItem(R.id.nav_home);
+       navigationView.setNavigationItemSelectedListener(this);
        taskList = new ArrayList<>() ;
 
         tasksRecyclerView = findViewById(R.id.taskRecyclerVIew);
@@ -98,36 +97,31 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         });
 
     }
-    //To avoid application closing when pressing the back button
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
-    }
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                Intent intent = new Intent(TodoMain.this,TodoMain.class);
+                startActivity(intent);
+                break;
             case R.id.nav_inbox:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MessageFragment()).commit();
+               Intent intent1 = new Intent(TodoMain.this,inboxLayout.class);
+               startActivity(intent1);
                 break;
             case R.id.nav_today:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ChatFragment()).commit();
+                Intent intent2 = new Intent(TodoMain.this,todayLayout.class);
+                startActivity(intent2);
                 break;
-            case R.id.nav_upcoming:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+            case R.id.nav_projects:
+                Intent intent3 = new Intent(TodoMain.this,projectLayout.class);
+                startActivity(intent3);
                 break;
             case R.id.nav_account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+                Intent intent4 = new Intent(TodoMain.this,accountLayout.class);
+                startActivity(intent4);
                 break;
             case R.id.nav_share: Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show(); break;
         }
@@ -143,28 +137,42 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         tasksAdapter.notifyDataSetChanged();
     }
 
-    //Search Widget
     @Override
-    public boolean onCreateOptionMenu (Menu menu){
+    public boolean onCreateOptionMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Type here to search");
+        final androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Search Here");
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                Toast.makeText(TodoMain.this, query, Toast.LENGTH_SHORT).show();
+                searchView.clearFocus();
+                return true;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                return true;
             }
-        });
+        };
+
+        searchView.setOnQueryTextListener(queryTextListener);
+
         return super.onCreateOptionsMenu(menu);
+    }
+
+    //To avoid application closing when pressing the back button
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 
 }

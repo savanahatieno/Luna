@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/drawer_layout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view3"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main" />
-
-
-
-
+        app:menu="@menu/menu_main"/>
 
 
     <RelativeLayout
@@ -25,47 +20,26 @@
 
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_inbox"
+            android:id="@+id/toolbar_project"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:navigationIcon="@drawable/menu_icon"
             app:menu="@menu/menu_search"
-            app:title="Task"
+            app:title="Projects"
             app:titleMarginStart="25dp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/taskRecyclerVIew"
+            android:id="@+id/taskRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="58dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginTop="54dp"
             android:nestedScrollingEnabled="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/teal_200"
-            android:src="@drawable/ic_baseline_add_24"
-            tools:ignore="ContentDescription" />
-
     </RelativeLayout>
-
-
 
 
 
