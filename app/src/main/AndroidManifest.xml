@@ -22,9 +22,6 @@
         <activity android:name=".accountLayout" />
         <activity android:name=".todayLayout" />
         <activity android:name=".inboxLayout" />
-        <activity
-            android:name=".ProfileActivity"
-            android:parentActivityName=".TodoMain" />
         <activity android:name=".TodoMain" />
         <activity android:name=".StartPage" />
         <activity android:name=".Login" />
