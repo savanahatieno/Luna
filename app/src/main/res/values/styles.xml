@@ -30,5 +30,11 @@
 
     </style>
 
+    <style name="custom_fab">
+        <item name="android:background">#00050505</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
 
 </resources>

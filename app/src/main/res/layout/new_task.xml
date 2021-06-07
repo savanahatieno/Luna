@@ -19,6 +19,7 @@
         android:layout_alignParentEnd="true"
         android:background="@android:color/transparent"
         android:backgroundTint="#0B7BEC"
+        android:fontFamily="@font/montserrat"
         android:text="@string/add_save"
         android:textAllCaps="false"
         android:textColor="@color/black"

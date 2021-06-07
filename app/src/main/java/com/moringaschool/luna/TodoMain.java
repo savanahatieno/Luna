@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -91,10 +92,7 @@ public class TodoMain extends AppCompatActivity implements DialogCloseListener, 
         tasksAdapter.setTasks(taskList);
 
 
-        fab.setOnClickListener(v -> {
-            AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
-
-        });
+        fab.setOnClickListener((View v) -> AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG));
 
     }
 

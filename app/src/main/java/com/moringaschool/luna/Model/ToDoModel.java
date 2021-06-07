@@ -1,5 +1,7 @@
 package com.moringaschool.luna.Model;
 
+import java.util.Collection;
+
 public class ToDoModel {
     private int id, status;
     private String task;

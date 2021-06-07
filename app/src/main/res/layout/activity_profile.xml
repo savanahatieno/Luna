@@ -38,7 +38,7 @@
 
 
             <TextView
-                android:id="@+id/fullnamefield"
+                android:id="@+id/fullname_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -47,7 +47,7 @@
                 android:layout_marginTop="52dp"
                 android:layout_toEndOf="@+id/image_profile"
                 android:fontFamily="@font/montserrat"
-                android:text="Luke Tomlinson"
+                android:text="Name"
                 android:textColor="#FBFBFB"
                 android:textSize="20sp" />
 
@@ -192,24 +192,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Enter password"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#1C1C1C">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/password_profile"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:hint="Enter password">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:drawableLeft="@drawable/lock_small"
-                    android:drawablePadding="9dp"
-                    android:fontFamily="@font/montserrat" />
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/white"-->
+<!--                    android:drawableLeft="@drawable/lock_small"-->
+<!--                    android:drawablePadding="9dp"-->
+<!--                    android:fontFamily="@font/montserrat" />-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <Button
                 android:id="@+id/updatebutton"
@@ -218,6 +216,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#4293DA"
                 android:fontFamily="@font/montserrat"
+                android:onClick="update"
                 android:text="UPDATE"
                 android:textSize="16sp"
                 android:textStyle="bold" />

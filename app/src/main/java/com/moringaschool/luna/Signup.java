@@ -169,7 +169,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        User user = new User(fullname, username, email);
+                        User user = new User(fullname, username, email,password);
 
                         FirebaseDatabase.getInstance().getReference("users")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

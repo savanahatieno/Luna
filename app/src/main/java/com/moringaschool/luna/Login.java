@@ -167,17 +167,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
+
+                    eUsername2.setError(null);
+
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
                         String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredEmail).child("email").getValue(String.class);
                         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("fullname", nameFromDB);
                         intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);
-
                         intent.putExtra("password", passwordFromDB);
+
+
                         startActivity(intent);
                     } else {
                         progressBar.setVisibility(View.GONE);

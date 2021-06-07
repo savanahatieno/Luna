@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.moringaschool.luna.Adapters.Todo;
+import com.moringaschool.luna.Model.ToDoModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class inboxLayout extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener  {
+
+    private RecyclerView recyclerView1;
+    private Todo tasksadapter;
+
+    private List<ToDoModel> taskList;
+    private List<ToDoModel> taskListFull;
 
 
     //Drawer Menu Variables
@@ -28,6 +43,59 @@ public class inboxLayout extends AppCompatActivity implements  NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox_layout);
+
+        taskList = new ArrayList<>();
+
+
+
+
+
+        //RecyclerView
+        recyclerView1 = findViewById(R.id.taskRecyclerView1);
+
+
+        recyclerView1.setHasFixedSize(true);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(inboxLayout.this));
+        tasksadapter = new Todo(this);
+        recyclerView1.setAdapter(tasksadapter);
+
+        ToDoModel task = new ToDoModel();
+        task.setTask("This is a new task created");
+        task.setStatus(0);
+        task.setId(1);
+
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+
+        tasksadapter.setTasks(taskList);
+
+
+
+
+
+        //Floating action bar
+        FloatingActionButton floatingActionButton_add = findViewById(R.id.floating_add_button);
+        floatingActionButton_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+        FloatingActionButton floatingActionButton_delete = findViewById(R.id.floating_delete_button);
+        floatingActionButton_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
 
         //Navigation Drawer IDS
