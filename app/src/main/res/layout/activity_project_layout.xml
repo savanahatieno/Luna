@@ -52,15 +52,54 @@
         </androidx.core.widget.NestedScrollView>
 
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/taskRecyclerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_marginTop="54dp"-->
-<!--            android:nestedScrollingEnabled="true"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+                <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/taskRecyclerView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="54dp"
+            android:nestedScrollingEnabled="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="11dp"
+            app:fab_addButtonColorNormal="#075AE8"
+            app:fab_addButtonColorPressed="#075AE8"
+            app:fab_addButtonPlusIconColor="@color/white"
+            app:fab_labelStyle="@style/custom_fab">
+
+
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#075AE8"
+                app:fab_colorPressed="#075AE8"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_baseline_delete"
+                android:id="@+id/floating_delete_button"
+                app:fab_title="Delete"/>
+
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#075AE8"
+                app:fab_colorPressed="#075AE8"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_baseline_add_24"
+                android:id="@+id/floating_add_button"
+                app:fab_title="Add"/>
+
+
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </RelativeLayout>
 
 

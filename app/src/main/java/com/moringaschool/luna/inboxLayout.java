@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,8 @@ import com.moringaschool.luna.Model.ToDoModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.http.DELETE;
 
 public class inboxLayout extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener  {
 
@@ -82,7 +85,7 @@ public class inboxLayout extends AppCompatActivity implements  NavigationView.On
         floatingActionButton_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
 
@@ -92,7 +95,7 @@ public class inboxLayout extends AppCompatActivity implements  NavigationView.On
         floatingActionButton_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(inboxLayout.this, "Item Deleted", Toast.LENGTH_SHORT).show();
             }
         });
 

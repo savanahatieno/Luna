@@ -40,7 +40,7 @@ public class StartPage extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user!= null){
-            Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+            Intent intent = new Intent(getApplicationContext(),accountLayout.class);
             startActivity(intent);
         }
 
@@ -111,7 +111,7 @@ public class StartPage extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),accountLayout.class);
                         startActivity(intent);
 
                     } else {

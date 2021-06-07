@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.moringaschool.luna.AddNewTask;
 import com.moringaschool.luna.Model.ToDoModel;
 import com.moringaschool.luna.R;
@@ -26,6 +27,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
     private TodoMain todomain;
+
 
     public ToDoAdapter(DatabaseHandler db, TodoMain todomain) {
         this.db = db;

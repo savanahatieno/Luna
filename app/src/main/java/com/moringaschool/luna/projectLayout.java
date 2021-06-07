@@ -6,20 +6,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.moringaschool.luna.Adapters.Todo;
 import com.moringaschool.luna.ApiUser.projects;
+import com.moringaschool.luna.Model.ToDoModel;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,6 +37,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class projectLayout extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+
+
+    private RecyclerView recyclerView3;
+    private Todo tasksadapter;
+
+    private List<ToDoModel> taskList;
     //Drawer Menu Variables
     DrawerLayout drawerLayout3;
     NavigationView navigationView3;
@@ -44,45 +57,100 @@ public class projectLayout extends AppCompatActivity implements NavigationView.O
 
         textViewResult = findViewById(R.id.text_view_result);
 
-        //Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.todoist.com/rest/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+//        //Retrofit
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://api.todoist.com/rest/v1/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        TodoistApi todoistApi = retrofit.create(TodoistApi.class);
+//
+//        Call<List<projects>>  call = TodoistApi.getprojects();
+//
+//
+//        call.enqueue(new Callback<List<projects>>() {
+//            @Override
+//            public void onResponse(@NotNull Call<List<projects>> call, @NotNull Response<List<projects>> response) {
+//
+//                if (!response.isSuccessful()){
+//                    textViewResult.setText("Code:" + response.code());
+//                    return;
+//                }
+//
+//                List<projects> projects1 = response.body();
+//
+//                for (projects projects: projects1){
+//                    String contents = "";
+//                    contents += "ID:" + projects.getId() + "\n";
+//                    contents += "Name:" + projects.getName() + "\n";
+//                    contents += "Comment:" + projects.getCommentCount() + "\n";
+//                    contents += "Order:" + projects.getOrder() + "\n";
+//
+//                    textViewResult.append(contents);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<projects>> call, Throwable t) {
+//                textViewResult.setText(t.getMessage());
+//            }
+//        });
 
-        TodoistApi todoistApi = retrofit.create(TodoistApi.class);
 
-        Call<List<projects>>  call = TodoistApi.getprojects();
+        taskList = new ArrayList<>();
 
 
-        call.enqueue(new Callback<List<projects>>() {
+
+
+
+        //RecyclerView
+        recyclerView3 = findViewById(R.id.taskRecyclerView3);
+
+
+        recyclerView3.setHasFixedSize(true);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(projectLayout.this));
+        tasksadapter = new Todo(this);
+        recyclerView3.setAdapter(tasksadapter);
+
+        ToDoModel task = new ToDoModel();
+        task.setTask("This is a new task created");
+        task.setStatus(0);
+        task.setId(1);
+
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+
+        tasksadapter.setTasks(taskList);
+
+
+
+
+
+        //Floating action bar
+        FloatingActionButton floatingActionButton_add = findViewById(R.id.floating_add_button);
+        floatingActionButton_add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(@NotNull Call<List<projects>> call, @NotNull Response<List<projects>> response) {
-
-                if (!response.isSuccessful()){
-                    textViewResult.setText("Code:" + response.code());
-                    return;
-                }
-
-                List<projects> projects1 = response.body();
-
-                for (projects projects: projects1){
-                    String contents = "";
-                    contents += "ID:" + projects.getId() + "\n";
-                    contents += "Name:" + projects.getName() + "\n";
-                    contents += "Comment:" + projects.getCommentCount() + "\n";
-                    contents += "Order:" + projects.getOrder() + "\n";
-
-                    textViewResult.append(contents);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<projects>> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
+            public void onClick(View v) {
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
+
+
+
+        FloatingActionButton floatingActionButton_delete = findViewById(R.id.floating_delete_button);
+        floatingActionButton_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(projectLayout.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
 
         //Navigation Drawer IDS

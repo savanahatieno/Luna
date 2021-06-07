@@ -140,7 +140,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 //redirect to user profile
-                startActivity(new Intent(Login.this, ProfileActivity.class));
+                startActivity(new Intent(Login.this, accountLayout.class));
             } else {
                 Toast.makeText(Login.this, "Failed to login! PLease check your credentials", Toast.LENGTH_SHORT).show();
             }
@@ -175,7 +175,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredEmail).child("email").getValue(String.class);
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), accountLayout.class);
                         intent.putExtra("fullname", nameFromDB);
                         intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);

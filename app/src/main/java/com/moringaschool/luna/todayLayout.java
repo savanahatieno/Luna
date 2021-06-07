@@ -6,18 +6,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.moringaschool.luna.Adapters.Todo;
+import com.moringaschool.luna.Model.ToDoModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class todayLayout extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
 
+    private RecyclerView recyclerView2;
+    private Todo tasksadapter1;
+
+    private List<ToDoModel> taskList;
 
     //Drawer Menu Variables
     DrawerLayout drawerLayout2;
@@ -28,6 +41,58 @@ public class todayLayout extends AppCompatActivity implements  NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_layout);
+
+
+        taskList = new ArrayList<>();
+
+
+
+        //RecyclerView
+        recyclerView2 = findViewById(R.id.taskRecyclerView2);
+
+
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(todayLayout.this));
+        tasksadapter1 = new Todo(this);
+//        tasksadapter = new Todo(this);
+        recyclerView2.setAdapter(tasksadapter1);
+
+        ToDoModel task = new ToDoModel();
+        task.setTask("This is a new task created");
+        task.setStatus(0);
+        task.setId(1);
+
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+
+        tasksadapter1.setTasks(taskList);
+
+
+
+
+
+        //Floating action bar
+        FloatingActionButton floatingActionButton_add = findViewById(R.id.floating_add_button);
+        floatingActionButton_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
+            }
+        });
+
+
+
+        FloatingActionButton floatingActionButton_delete = findViewById(R.id.floating_delete_button);
+        floatingActionButton_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(todayLayout.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
